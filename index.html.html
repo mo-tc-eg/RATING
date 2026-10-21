@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0c">
+  <meta name="description" content="مفاجأة خاصة لـ Zashour — افتح الصندوق واكتشف تجربة الكمين.">
+  <title>هدية خاصة | Zashour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --panel: #111114;
+      --panel-2: #17171b;
+      --white: #f7f7f8;
+      --muted: #a3a3ad;
+      --line: rgba(255,255,255,.09);
+      --orange: #ff552f;
+      --orange-2: #ff7847;
+      --red: #d92525;
+      --glow: rgba(255,75,42,.23);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--white);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(217,37,37,.16), transparent 42%),
+        radial-gradient(ellipse at 100% 65%, rgba(255,85,47,.07), transparent 30%),
+        var(--bg);
+      font-family: "Cairo", sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .16;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .page { position: relative; z-index: 1; width: min(1120px, calc(100% - 36px)); margin: auto; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:12px; min-width:0; }
+    .brand img { width:48px; height:48px; object-fit:contain; border-radius:13px; background:#151518; border:1px solid var(--line); padding:4px; }
+    .brand-copy { line-height:1.35; }
+    .brand-copy strong { display:block; font-size:15px; letter-spacing:.3px; }
+    .brand-copy span { color:var(--muted); font-size:11px; }
+    .private-tag { display:flex; align-items:center; gap:7px; color:#e7e7e9; font-size:12px; border:1px solid var(--line); background:rgba(255,255,255,.035); border-radius:99px; padding:8px 12px; white-space:nowrap; }
+    .material-symbols-rounded { font-size:19px; line-height:1; font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24; }
+    main { padding: 56px 0 40px; }
+    .hero { display:grid; grid-template-columns: 1.04fr .96fr; align-items:center; gap: clamp(28px, 6vw, 80px); }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:#ff9a7e; font-size:12px; font-weight:700; letter-spacing:.7px; }
+    .eyebrow::before { content:""; width:24px; height:2px; background:var(--orange); border-radius:4px; }
+    h1 { font-size:clamp(42px, 6vw, 76px); line-height:1.13; margin:18px 0 20px; font-weight:900; letter-spacing:-1.8px; }
+    h1 .accent { color:var(--orange); text-shadow:0 0 32px rgba(255,85,47,.15); }
+    .intro { color:#b9b9c1; font-size:clamp(14px, 1.5vw, 17px); line-height:2.1; max-width:500px; margin:0 0 28px; }
+    .recipient { display:flex; align-items:center; gap:12px; margin:26px 0 30px; }
+    .recipient-line { width:3px; height:42px; border-radius:5px; background:linear-gradient(var(--orange),var(--red)); }
+    .recipient small { display:block; color:var(--muted); font-size:11px; }
+    .recipient strong { display:block; font-size:22px; font-weight:800; letter-spacing:.5px; direction:ltr; text-align:right; }
+    .cta-row { display:flex; flex-wrap:wrap; align-items:center; gap:13px; }
+    .primary-btn { display:inline-flex; justify-content:center; align-items:center; gap:10px; border:0; cursor:pointer; color:#fff; background:linear-gradient(110deg,#ff7040,#e9362d); padding:14px 22px; border-radius:13px; font-size:14px; font-weight:800; box-shadow:0 10px 35px rgba(255,65,42,.2); transition:transform .22s, box-shadow .22s; }
+    .primary-btn:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(255,65,42,.3); }
+    .secondary-note { color:#85858f; font-size:11px; display:flex; align-items:center; gap:7px; }
+    .portrait-wrap { position:relative; max-width:420px; width:100%; justify-self:center; }
+    .portrait-halo { position:absolute; inset:12% -7%; background:var(--glow); filter:blur(55px); border-radius:50%; }
+    .portrait-card { position:relative; padding:12px; border:1px solid rgba(255,255,255,.13); border-radius:25px; background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.015)); box-shadow:0 28px 80px rgba(0,0,0,.5); transform:rotate(-1.3deg); }
+    .portrait-card::before { content:""; position:absolute; inset:7px; border:1px solid rgba(255,255,255,.055); border-radius:18px; pointer-events:none; z-index:1; }
+    .portrait { display:block; width:100%; aspect-ratio: 4 / 4.6; object-fit:cover; border-radius:17px; background:#1b1b20; }
+    .portrait-caption { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:15px 8px 4px; }
+    .portrait-caption strong { font-size:13px; }
+    .portrait-caption span { color:var(--muted); font-size:10px; }
+    .corner-mark { position:absolute; width:55px; height:55px; border-color:var(--orange); opacity:.85; z-index:2; }
+    .corner-mark.one { top:-9px; right:-9px; border-top:2px solid; border-right:2px solid; border-radius:0 12px 0 0; }
+    .corner-mark.two { bottom:-9px; left:-9px; border-bottom:2px solid; border-left:2px solid; border-radius:0 0 0 12px; }
+    .gift-section { margin:82px 0 20px; }
+    .section-head { text-align:center; margin-bottom:25px; }
+    .section-head .eyebrow { justify-content:center; }
+    h2 { font-size:clamp(25px,3.4vw,38px); margin:12px 0 8px; font-weight:900; }
+    .section-head p { color:var(--muted); font-size:13px; margin:0; line-height:1.9; }
+    .gift-card { position:relative; max-width:760px; margin:auto; overflow:hidden; border:1px solid rgba(255,94,55,.25); border-radius:24px; background:linear-gradient(135deg,rgba(255,85,47,.075),rgba(255,255,255,.025) 45%,rgba(217,37,37,.07)); padding:clamp(22px,4vw,38px); text-align:center; }
+    .gift-card::before { content:""; position:absolute; width:320px; height:220px; border-radius:50%; background:rgba(255,75,42,.13); filter:blur(70px); left:calc(50% - 160px); top:20px; pointer-events:none; }
+    .gift-content { position:relative; z-index:1; }
+    .gift-icon-wrap { display:grid; place-items:center; width:74px; height:74px; margin:0 auto 17px; border:1px solid rgba(255,115,76,.42); background:rgba(255,83,47,.09); border-radius:22px; color:var(--orange-2); box-shadow:0 0 45px rgba(255,85,47,.1); }
+    .gift-icon-wrap .material-symbols-rounded { font-size:36px; }
+    .gift-card h3 { font-size:22px; margin:0 0 7px; font-weight:800; }
+    .gift-card p { color:#a8a8b1; font-size:13px; line-height:1.9; margin:0 auto 22px; max-width:480px; }
+    .gift-button { min-width:220px; }
+    .gift-button .material-symbols-rounded { transition:transform .2s; }
+    .gift-button:hover .material-symbols-rounded { transform:translateX(-4px); }
+    .hint { display:flex; align-items:center; justify-content:center; gap:7px; color:#777781; font-size:11px; margin-top:15px; }
+    .footer { display:flex; justify-content:space-between; gap:16px; border-top:1px solid var(--line); margin-top:55px; padding:20px 0 24px; color:#777781; font-size:11px; }
+    .footer strong { color:#b9b9c1; font-weight:700; }
+    .reveal { opacity:0; transform:translateY(18px); animation:reveal .75s ease forwards; }
+    .delay-1 { animation-delay:.12s; } .delay-2 { animation-delay:.24s; } .delay-3 { animation-delay:.36s; }
+    @keyframes reveal { to { opacity:1; transform:translateY(0); } }
+    @media (max-width:760px) {
+      .page { width:min(100% - 28px, 560px); }
+      .topbar { padding:17px 0; }
+      .brand img { width:42px; height:42px; }
+      .private-tag { font-size:10px; padding:7px 9px; }
+      main { padding-top:35px; }
+      .hero { grid-template-columns:1fr; gap:32px; }
+      .hero-copy { text-align:center; }
+      .eyebrow { justify-content:center; }
+      h1 { font-size:clamp(42px,12vw,62px); margin-top:15px; }
+      .intro { margin-inline:auto; }
+      .recipient { justify-content:center; }
+      .recipient-line { height:38px; }
+      .cta-row { justify-content:center; }
+      .portrait-wrap { width:min(82%,350px); grid-row:1; }
+      .portrait { aspect-ratio:4 / 4.15; }
+      .gift-section { margin-top:58px; }
+      .footer { margin-top:40px; flex-direction:column; align-items:center; text-align:center; }
+    }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } .reveal { opacity:1; transform:none; } }
+
+    /* EL KAMIN PLAYER FEEDBACK */
+    #feedback-section { margin: 82px 0 20px; scroll-margin-top: 24px; }
+    #feedback-section .feedback-card { padding: clamp(19px, 5vw, 32px); background: #151515f5; border: 1px solid rgba(255,255,255,.12); border-radius: 19px; box-shadow: 0 25px 80px #00000030; }
+    #feedback-section .feedback-section-title { margin: 0 0 22px; font-size: 16px; font-weight: 800; }
+    #feedback-section .feedback-number { color: var(--orange); direction: ltr; display: inline-block; margin-left: 8px; font-size: 12px; letter-spacing: 1px; }
+    #feedback-section .feedback-field { margin-bottom: 20px; }
+    #feedback-section .feedback-field label, #feedback-section .feedback-question-title { display: block; font-size: 13px; font-weight: 700; margin-bottom: 9px; }
+    #feedback-section .feedback-optional { color: #888; font-size: 11px; font-weight: 400; }
+    #feedback-section .feedback-input { width: 100%; min-height: 49px; padding: 12px 14px; background: #101010; color: white; border: 1px solid #343434; border-radius: 10px; outline: none; transition: border-color .2s, box-shadow .2s; font: inherit; }
+    #feedback-section .feedback-input::placeholder { color: #666; }
+    #feedback-section .feedback-input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px #ff572b17; }
+    #feedback-section textarea.feedback-input { min-height: 105px; resize: vertical; line-height: 1.9; }
+    #feedback-section .feedback-divider { height: 1px; background: #2d2d2d; margin: 27px 0; }
+    #feedback-section .feedback-rating-box { padding: 21px 12px; text-align: center; background: #101010; border: 1px solid #2e2e2e; border-radius: 13px; }
+    #feedback-section .feedback-rating-heading { font-size: 15px; font-weight: 800; }
+    #feedback-section .feedback-rating-hint { margin: 5px 0 20px; color: var(--muted); font-size: 11px; line-height: 1.9; }
+    #feedback-section .feedback-rating-options { display: flex; justify-content: center; align-items: center; gap: clamp(5px, 2vw, 12px); direction: ltr; }
+    #feedback-section .feedback-rating-option { width: 58px; height: 58px; display: grid; place-items: center; padding: 0; border: 1px solid #393939; border-radius: 12px; background: #1b1b1b; color: #777; cursor: pointer; transition: .2s; }
+    #feedback-section .feedback-rating-option svg { width: 34px; height: 34px; }
+    #feedback-section .feedback-rating-option:hover { color: var(--orange); border-color: #a94b30; transform: translateY(-2px); }
+    #feedback-section .feedback-rating-option.selected { color: var(--orange); background: #351b13; border-color: var(--orange); box-shadow: 0 0 18px #ff572b17; }
+    #feedback-section .feedback-rating-caption { min-height: 24px; margin-top: 14px; color: var(--orange-2); font-size: 12px; }
+    #feedback-section .feedback-rating-error { display: none; color: #ff8b70; font-size: 12px; margin-top: 8px; }
+    #feedback-section .feedback-question { margin-bottom: 25px; }
+    #feedback-section .feedback-question:last-child { margin-bottom: 0; }
+    #feedback-section .feedback-question-title { line-height: 2; margin-bottom: 12px; }
+    #feedback-section .feedback-choices { display: flex; flex-wrap: wrap; gap: 9px; }
+    #feedback-section .feedback-choice { position: relative; display: inline-flex; cursor: pointer; margin: 0; }
+    #feedback-section .feedback-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    #feedback-section .feedback-choice span { min-width: 76px; padding: 9px 17px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #353535; border-radius: 9px; background: #101010; color: #c6c6c6; font-size: 13px; transition: .2s; }
+    #feedback-section .feedback-choice:hover span { border-color: #9b4a30; }
+    #feedback-section .feedback-choice input:checked + span { background: #351b13; color: var(--orange); border-color: var(--orange); }
+    #feedback-section .feedback-choice input:focus-visible + span { outline: 2px solid var(--orange); outline-offset: 3px; }
+    #feedback-section .feedback-submit { width: 100%; min-height: 54px; margin-top: 28px; display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(110deg,#ff7040,#e9362d); color: #fff; border: 0; border-radius: 11px; font-size: 14px; font-weight: 800; cursor: pointer; transition: .2s; }
+    #feedback-section .feedback-submit:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 8px 25px #ff572b25; }
+    #feedback-section .feedback-submit:disabled { opacity: .7; cursor: wait; }
+    #feedback-section .feedback-submit svg { width: 19px; height: 19px; flex-shrink: 0; }
+    #feedback-section .feedback-privacy { margin: 13px 0 0; color: #777; font-size: 10px; line-height: 2; text-align: center; }
+    #feedback-section .feedback-status { display: none; margin-top: 15px; padding: 12px; border: 1px solid #573b2d; border-radius: 10px; color: #ffb69b; background: #241711; font-size: 12px; line-height: 1.9; text-align: center; }
+    #feedback-section .feedback-success { display: none; text-align: center; padding: 34px 8px 25px; animation: reveal .45s ease both; }
+    #feedback-section .feedback-success-mark { width: 76px; height: 76px; display: grid; place-items: center; margin: 0 auto 22px; border: 1px solid #347b54; border-radius: 50%; background: #153020; color: #62d99a; }
+    #feedback-section .feedback-success-mark svg { width: 35px; height: 35px; }
+    #feedback-section .feedback-success h3 { margin: 0 0 10px; font-size: clamp(24px, 6vw, 31px); font-weight: 900; }
+    #feedback-section .feedback-success h3 span { color: var(--orange); }
+    #feedback-section .feedback-success p { max-width: 390px; margin: 0 auto; color: #aaa; font-size: 13px; line-height: 2.2; }
+    #feedback-section .feedback-success-brand { margin-top: 25px; color: #777; font-size: 11px; letter-spacing: 2px; direction: ltr; }
+    @media (max-width: 430px) {
+      #feedback-section .feedback-rating-option { width: 49px; height: 53px; border-radius: 9px; }
+      #feedback-section .feedback-rating-option svg { width: 29px; height: 29px; }
+      #feedback-section .feedback-choices { gap: 7px; }
+      #feedback-section .feedback-choice span { min-width: 65px; padding: 9px 13px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar reveal">
+      <a class="brand" href="#top" aria-label="El Kamin">
+        <img src="https://i.postimg.cc/J0Sgsd57/El-kamin-logo.png" alt="شعار لعبة الكمين">
+        <div class="brand-copy"><strong>EL KAMIN</strong><span>AN EXPERIENCE FOR YOU</span></div>
+      </a>
+      <div class="private-tag"><span class="material-symbols-rounded">lock</span><span>رسالة خاصة</span></div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow reveal delay-1">NOT JUST A LINK</div>
+          <h1 class="reveal delay-1">فيه حاجة<br>مستخبّية <span class="accent">ليك.</span></h1>
+          <p class="intro reveal delay-2">مش كل هدية لازم تكون في علبة. أحيانًا أحلى هدية بتكون تجربة جديدة، معمولة مخصوص علشانك. جهّز نفسك واكتشف المفاجأة.</p>
+          <div class="recipient reveal delay-2">
+            <div class="recipient-line"></div>
+            <div><small>المفاجأة دي معمولة مخصوص لـ</small><strong>ZASHOUR</strong></div>
+          </div>
+          <div class="cta-row reveal delay-3">
+            <a class="primary-btn" href="#the-gift"><span class="material-symbols-rounded">redeem</span> اكتشف هديتك <span class="material-symbols-rounded">arrow_downward</span></a>
+            <span class="secondary-note"><span class="material-symbols-rounded">verified_user</span> تجربة خاصة ومميزة</span>
+          </div>
+        </div>
+
+        <div class="portrait-wrap reveal delay-2">
+          <div class="portrait-halo"></div>
+          <div class="corner-mark one"></div><div class="corner-mark two"></div>
+          <div class="portrait-card">
+            <img class="portrait" src="https://i.postimg.cc/j5WyGVmF/292159CD-ED30-49EB-81A3-05D000864FFF.png" alt="صورة Zashour" onerror="this.style.objectFit='contain';this.alt='تعذر تحميل الصورة';">
+            <div class="portrait-caption"><strong>ZASHOUR</strong><span>YOUR MOMENT STARTS HERE</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gift-section" id="the-gift">
+        <div class="section-head reveal">
+          <div class="eyebrow">THE SECRET BOX</div>
+          <h2>الصندوق مستنيك</h2>
+          <p>جوا الصندوق تجربة مختلفة… بس مش هتعرفها غير لما تفتحه.</p>
+        </div>
+        <div class="gift-card reveal delay-1">
+          <div class="gift-content">
+            <div class="gift-icon-wrap"><span class="material-symbols-rounded">redeem</span></div>
+            <h3>هدية باسمك، وتجربة تبدأ بضغطة</h3>
+            <p>افتح الصندوق وادخل عالم لعبة الكمين. كل اللي عليك إنك تضغط على الزر، والباقي هتكتشفه بنفسك.</p>
+            <a class="primary-btn gift-button" href="https://el-kamin.wasmer.app/" target="_blank" rel="noopener noreferrer">
+              افتح الصندوق وابدأ <span class="material-symbols-rounded">arrow_back</span>
+            </a>
+            <div class="hint"><span class="material-symbols-rounded">open_in_new</span> هتنتقل مباشرةً إلى اللعبة في صفحة جديدة</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="feedback-section" aria-labelledby="feedback-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">PLAYER FEEDBACK</div>
+          <h2 id="feedback-heading">رأيك يهمنا.</h2>
+          <p>جرّبت اللعبة؟ احكيلنا رأيك بصراحة. رأيك هيفرق معانا ويساعدنا نخلي التجربة أحسن.</p>
+        </div>
+
+        <div class="feedback-card reveal delay-1" id="feedbackCard">
+          <div class="gift-card" style="padding:15px 18px; margin:0 auto 25px; border-radius:13px; text-align:right;">
+            <div style="display:flex;align-items:center;gap:13px;position:relative;z-index:1;">
+              <div class="gift-icon-wrap" style="width:48px;height:48px;flex:0 0 48px;margin:0;border-radius:12px;">
+                <span class="material-symbols-rounded">redeem</span>
+              </div>
+              <div>
+                <strong style="display:block;font-size:13px;margin-bottom:3px;">هدية من مؤمن تامر</strong>
+                <span style="color:#c4aaa1;font-size:12px;line-height:1.9;">فرصة إنك تجرّب اللعبة وتساعدنا نطوّرها برأيك.</span>
+              </div>
+            </div>
+          </div>
+
+          <form id="feedbackForm">
+            <input type="hidden" name="access_key" value="05a28a1e-a46e-4311-a296-2c9608ab4843">
+            <input type="hidden" name="subject" value="تقييم جديد للعبة EL KAMIN">
+            <input type="hidden" name="from_name" value="EL KAMIN - Game Rating">
+            <input type="hidden" name="replyto" id="feedbackReplyTo" value="">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+            <h3 class="feedback-section-title"><span class="feedback-number">01</span> خلّينا نعرفك</h3>
+            <div class="feedback-field">
+              <label for="feedbackName">اسمك</label>
+              <input class="feedback-input" id="feedbackName" name="name" type="text" placeholder="اكتب اسمك هنا" autocomplete="name" maxlength="80" required>
+            </div>
+            <div class="feedback-field">
+              <label for="feedbackEmail">الإيميل بتاعك للتواصل</label>
+              <input class="feedback-input" id="feedbackEmail" name="email" type="email" placeholder="name@example.com" autocomplete="email" maxlength="254" required>
+            </div>
+
+            <div class="feedback-divider"></div>
+            <h3 class="feedback-section-title"><span class="feedback-number">02</span> قيّم تجربتك</h3>
+
+            <div class="feedback-rating-box">
+              <div class="feedback-rating-heading">تقييمك للعبة EL KAMIN</div>
+              <p class="feedback-rating-hint">اختار عدد دراعات اللعب اللي يعبّر عن تجربتك</p>
+              <div class="feedback-rating-options" id="feedbackRatingOptions" role="group" aria-label="تقييم اللعبة من واحد لخمسة">
+
+                <button class="feedback-rating-option" type="button" data-rating="1" aria-label="تقييم واحد من خمسة" aria-pressed="false"><svg viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7h16a7 7 0 0 1 6.6 4.7l3 8.2a4 4 0 0 1-6.6 4.2l-5-4.1H14l-5 4.1a4 4 0 0 1-6.6-4.2l3-8.2A7 7 0 0 1 12 7Z"/><path d="M11 12v8M7 16h8M27 14h.1M31 18h.1"/></svg></button>
+                <button class="feedback-rating-option" type="button" data-rating="2" aria-label="تقييم اتنين من خمسة" aria-pressed="false"><svg viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7h16a7 7 0 0 1 6.6 4.7l3 8.2a4 4 0 0 1-6.6 4.2l-5-4.1H14l-5 4.1a4 4 0 0 1-6.6-4.2l3-8.2A7 7 0 0 1 12 7Z"/><path d="M11 12v8M7 16h8M27 14h.1M31 18h.1"/></svg></button>
+                <button class="feedback-rating-option" type="button" data-rating="3" aria-label="تقييم تلاتة من خمسة" aria-pressed="false"><svg viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7h16a7 7 0 0 1 6.6 4.7l3 8.2a4 4 0 0 1-6.6 4.2l-5-4.1H14l-5 4.1a4 4 0 0 1-6.6-4.2l3-8.2A7 7 0 0 1 12 7Z"/><path d="M11 12v8M7 16h8M27 14h.1M31 18h.1"/></svg></button>
+                <button class="feedback-rating-option" type="button" data-rating="4" aria-label="تقييم أربعة من خمسة" aria-pressed="false"><svg viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7h16a7 7 0 0 1 6.6 4.7l3 8.2a4 4 0 0 1-6.6 4.2l-5-4.1H14l-5 4.1a4 4 0 0 1-6.6-4.2l3-8.2A7 7 0 0 1 12 7Z"/><path d="M11 12v8M7 16h8M27 14h.1M31 18h.1"/></svg></button>
+                <button class="feedback-rating-option" type="button" data-rating="5" aria-label="تقييم خمسة من خمسة" aria-pressed="false"><svg viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7h16a7 7 0 0 1 6.6 4.7l3 8.2a4 4 0 0 1-6.6 4.2l-5-4.1H14l-5 4.1a4 4 0 0 1-6.6-4.2l3-8.2A7 7 0 0 1 12 7Z"/><path d="M11 12v8M7 16h8M27 14h.1M31 18h.1"/></svg></button>
+              </div>
+              <div class="feedback-rating-caption" id="feedbackRatingCaption" aria-live="polite">لسه مختارتش تقييمك</div>
+              <div class="feedback-rating-error" id="feedbackRatingError">اختار تقييم اللعبة الأول قبل ما تبعت الفورم.</div>
+            </div>
+            <input type="hidden" name="rating" id="feedbackRatingValue" value="">
+
+            <div class="feedback-field" style="margin-top:22px;margin-bottom:0">
+              <label for="feedbackComment">احكيلنا رأيك <span class="feedback-optional">(اختياري)</span></label>
+              <textarea class="feedback-input" id="feedbackComment" name="comment" placeholder="إيه أكتر حاجة عجبتك؟ وإيه اللي شايف إنه محتاج يتحسّن؟" maxlength="2000"></textarea>
+            </div>
+
+            <div class="feedback-divider"></div>
+            <h3 class="feedback-section-title"><span class="feedback-number">03</span> جاوبنا على كام سؤال</h3>
+
+            <div class="feedback-question">
+              <div class="feedback-question-title">عمرك شوفت لعبة مصرية بالجرافيك ده قبل كده؟</div>
+              <div class="feedback-choices">
+                <label class="feedback-choice"><input type="radio" name="graphics" value="آه" required><span>آه</span></label>
+                <label class="feedback-choice"><input type="radio" name="graphics" value="لأ" required><span>لأ</span></label>
+              </div>
+            </div>
+
+            <div class="feedback-question">
+              <div class="feedback-question-title">ممكن ترشّح اللعبة دي لصحابك؟</div>
+              <div class="feedback-choices">
+                <label class="feedback-choice"><input type="radio" name="recommend" value="آه" required><span>آه</span></label>
+                <label class="feedback-choice"><input type="radio" name="recommend" value="لأ" required><span>لأ</span></label>
+                <label class="feedback-choice"><input type="radio" name="recommend" value="ممكن" required><span>ممكن</span></label>
+              </div>
+            </div>
+
+            <div class="feedback-question">
+              <div class="feedback-question-title">شايف إن اللعبة ممتعة؟</div>
+              <div class="feedback-choices">
+                <label class="feedback-choice"><input type="radio" name="fun" value="آه" required><span>آه</span></label>
+                <label class="feedback-choice"><input type="radio" name="fun" value="لأ" required><span>لأ</span></label>
+              </div>
+            </div>
+
+            <button type="submit" class="feedback-submit" id="feedbackSubmitButton">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              <span id="feedbackSubmitText">ابعت تقييمك</span>
+            </button>
+            <div class="feedback-status" id="feedbackStatus" role="alert"></div>
+            <p class="feedback-privacy">متنساش تجاوب على الأسئلة كلها قبل الإرسال. بياناتك هتتبعت علشان نقدر نراجع تقييمك.</p>
+          </form>
+
+          <div class="feedback-success" id="feedbackSuccess" role="status" aria-live="polite">
+            <div class="feedback-success-mark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+            </div>
+            <h3>تسلم يا <span id="feedbackSuccessName">بطل</span>!</h3>
+            <p>تقييمك اتبعت بنجاح.<br>شكرًا إنك خصصت وقتك وشاركتنا رأيك في EL KAMIN.<br>رأيك بيفرق معانا، وهنستفيد منه علشان نطوّر اللعبة ونخليها أحسن.</p>
+            <div class="feedback-success-brand">EL KAMIN</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <span>تم تجهيز هذه المفاجأة بعناية.</span>
+      <span><strong>EL KAMIN</strong> <span aria-hidden="true">/</span> A SPECIAL EXPERIENCE</span>
+    </footer>
+  </div>
+
+  <script>
+  (() => {
+    const form = document.getElementById('feedbackForm');
+    if (!form) return;
+    const ratingValue = document.getElementById('feedbackRatingValue');
+    const ratingButtons = document.querySelectorAll('#feedbackRatingOptions .feedback-rating-option');
+    const ratingCaption = document.getElementById('feedbackRatingCaption');
+    const ratingError = document.getElementById('feedbackRatingError');
+    const formStatus = document.getElementById('feedbackStatus');
+    const submitButton = document.getElementById('feedbackSubmitButton');
+    const submitText = document.getElementById('feedbackSubmitText');
+    const successScreen = document.getElementById('feedbackSuccess');
+
+    const ratingLabels = {
+      1: 'تجربة محتاجة تحسين',
+      2: 'مقبولة، ونقدر نعمل أحسن',
+      3: 'تجربة كويسة',
+      4: 'تجربة ممتازة',
+      5: 'تجربة جامدة جدًا!'
+    };
+
+    ratingButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = Number(button.dataset.rating);
+        ratingValue.value = value;
+        ratingButtons.forEach(item => {
+          const itemValue = Number(item.dataset.rating);
+          item.classList.toggle('selected', itemValue <= value);
+          item.setAttribute('aria-pressed', itemValue === value ? 'true' : 'false');
+        });
+        ratingCaption.textContent = value + ' من 5 — ' + ratingLabels[value];
+        ratingError.style.display = 'none';
+      });
+    });
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      formStatus.style.display = 'none';
+      formStatus.textContent = '';
+
+      if (!ratingValue.value) {
+        ratingError.style.display = 'block';
+        document.querySelector('#feedback-section .feedback-rating-box').scrollIntoView({behavior:'smooth', block:'center'});
+        return;
+      }
+      if (!form.reportValidity()) return;
+
+      const name = document.getElementById('feedbackName').value.trim();
+      const email = document.getElementById('feedbackEmail').value.trim();
+      if (!name || !email) return;
+
+      document.getElementById('feedbackReplyTo').value = email;
+      const originalText = submitText.textContent;
+      submitButton.disabled = true;
+      submitText.textContent = 'جاري إرسال تقييمك...';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {'Accept':'application/json'},
+          body: new FormData(form)
+        });
+        let result;
+        try { result = await response.json(); }
+        catch { throw new Error('حصلت مشكلة في قراءة رد الخدمة.'); }
+
+        if (!response.ok || result.success !== true) {
+          throw new Error(result.message || 'الإرسال ماكملش. جرّب تاني كمان شوية.');
+        }
+
+        document.getElementById('feedbackSuccessName').textContent = name;
+        form.style.display = 'none';
+        successScreen.style.display = 'block';
+        document.getElementById('feedbackCard').scrollIntoView({behavior:'smooth', block:'start'});
+      } catch (error) {
+        formStatus.textContent = error.message || 'معذرة، حصلت مشكلة في الاتصال. اتأكد من الإنترنت وجرّب تاني.';
+        formStatus.style.display = 'block';
+        formStatus.scrollIntoView({behavior:'smooth', block:'center'});
+      } finally {
+        submitButton.disabled = false;
+        submitText.textContent = originalText;
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>
